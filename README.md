@@ -22,7 +22,7 @@ Este proyecto se gestiona íntegramente en la nube:
 
 ### Uso
 
-Acceda a la URL de producción: https://radios-on-line.vercel.app/
+Acceda a la URL de producción: https://radios-online.vercel.app/
 
 * **Botón Power:** Inicializa/Detiene el stream (con manejo de excepciones de red).
 * **Botones Prev/Next:** Navegación cíclica por la lista de emisoras (`STATIONS` en `js/script.js`).
