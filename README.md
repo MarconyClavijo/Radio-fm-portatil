@@ -1,7 +1,7 @@
 # Informe de Ingeniería: Radio Online Minimalista
 
 <p align="center">
-  <img src="img/Radio.jpg" alt="Radio" width="400">
+  <img src="img/Radio.jpg" alt="Radio" width="200">
 </p>
 
 Streaming de música clásica y ambiental para concentración y estudio. PWA de alto rendimiento desarrollada en html5, css y Vanilla JS con optimización de recursos.
