@@ -1,13 +1,5 @@
 const stations = [
   {
-    name: "Radio La Tremenda",
-    frequency: "106.5",
-    url: "https://radiostreaming.pro/8238/stream",
-    logo: "img/antena10.png",
-    facebook: "https://facebook.com",
-    whatsapp: "https://wa.me"
-  },
-  {
     name: "Radio La Patrona",
     frequency: "96.3",
     url: "https://sonic.globalstream.pro/8080/stream",
@@ -26,11 +18,20 @@ const stations = [
   {
     name: "Radio La Fuerte",
     frequency: "104.7",
-    url: "https://innovatestream.pe",
+    url: "https://innovatelstreamimg/",
+    logo: "img/antena10.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+  },
+  {
+    name: "Radio La Tremenda",
+    frequency: "106.5",
+    url: "https://radiostreaming.pro/8238/stream",
     logo: "img/lafuerte.png",
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
   }
+  
 ];
 
 let index = 0;
