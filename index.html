@@ -35,9 +35,13 @@
     <!-- Nombre de la Emisora Activa -->
     <div class="station-name" id="station">Buscando señal...</div>
 
-    <!-- Sintonizador Circular Analógico con Números Reales -->
+    <!-- Sintonizador Circular Analógico Simétrico -->
     <div class="tuner-outer-circle">
+      <!-- Aguja indicadora que gira desde el centro real -->
+      <div class="tuner-needle" id="needle"></div>
+
       <div class="dial-scale">
+        <span class="dial-num num-86">86</span>
         <span class="dial-num num-88">88</span>
         <span class="dial-num num-90">90</span>
         <span class="dial-num num-92">92</span>
@@ -69,7 +73,7 @@
       <div class="status-text" id="status"></div>
     </div>
 
-    <!-- Rejilla de Estaciones Favoritas Ajustada (01 al 06) -->
+    <!-- Rejilla de Estaciones Favoritas -->
     <div class="favorites-grid">
       <div class="fav-box" data-index="0"><span class="fav-num">01</span><span class="fav-plus">+</span></div>
       <div class="fav-box" data-index="1"><span class="fav-num">02</span><span class="fav-plus">+</span></div>
