@@ -1,3 +1,4 @@
+/* Configuración Base Universal */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,22 +11,38 @@ body {
   background: radial-gradient(circle at center, #0a4d68 0%, #051923 100%);
   color: #ffffff;
   display: flex;
-  flex-direction: column;
-  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   overflow: hidden;
 }
 
+/* Contenedor Inteligente: Se adapta a celulares y se centra en Computadoras */
+.main-container {
+  width: 100%;
+  max-width: 420px; /* Tamaño máximo tipo celular en computadoras */
+  height: 100vh;
+  max-height: 850px; /* Evita que se estire demasiado */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: transparent;
+  position: relative;
+}
+
+/* Barra Superior */
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: rgba(22, 23, 26, 0.4);
+  padding: 15px 20px;
+  width: 100%;
 }
 
 .app-title {
   font-size: 16px;
   font-weight: 600;
+  color: #8e9297;
 }
 
 .top-btn {
@@ -37,29 +54,23 @@ body {
   cursor: pointer;
 }
 
-.main-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
+/* Pantalla Digital Superior */
 .display-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  margin-top: 5px;
+  margin: 0 auto;
 }
 
 .nav-arrow {
   background: none;
   border: none;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  padding: 10px;
 }
 
 .freq-box {
@@ -83,8 +94,9 @@ body {
 }
 
 .freq-number {
-  font-size: 64px;
+  font-size: 68px;
   font-weight: 300;
+  letter-spacing: -1px;
 }
 
 .freq-unit {
@@ -94,29 +106,29 @@ body {
 }
 
 .station-name {
-  font-size: 15px;
+  font-size: 16px;
   color: #8e9297;
   text-align: center;
-  margin-top: -5px;
-  min-height: 22px;
-}
-
-/* El Dial Circular de Diseño Original */
-.tuner-outer-circle {
-  position: relative;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #0c3547 30%, #061e29 90%);
-  border: 2px solid rgba(0, 168, 204, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: inset 0 0 25px rgba(0,0,0,0.8), 0 0 35px rgba(0, 168, 204, 0.15);
+  min-height: 24px;
   margin: 5px 0;
 }
 
-/* La Aguja Física centrada que rota desde el medio exacto */
+/* EL GRAN DIAL CIRCULAR (Agrandado a 270px) */
+.tuner-outer-circle {
+  position: relative;
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #0c3547 30%, #061e29 90%);
+  border: 2px solid rgba(0, 168, 204, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.8), 0 0 40px rgba(0, 168, 204, 0.15);
+  margin: 15px auto;
+}
+
+/* Aguja física rotativa calibrada desde el centro exacto */
 .tuner-needle {
   position: absolute;
   top: 0;
@@ -125,24 +137,24 @@ body {
   height: 100%;
   z-index: 6;
   transform: rotate(var(--rotation, -120deg));
-  transition: transform 0.2s ease-out;
+  transition: transform 0.25s ease-out;
   pointer-events: none;
 }
 
 .tuner-needle::before {
   content: '';
   position: absolute;
-  top: 15px;
+  top: 25px; /* Bajada un poco para cruzar perfectamente sobre los números */
   left: 50%;
-  width: 3px;
-  height: 25px;
+  width: 4px;
+  height: 22px;
   background-color: #ff5722;
-  box-shadow: 0 0 8px #ff5722;
+  box-shadow: 0 0 10px #ff5722;
   transform: translateX(-50%);
   border-radius: 2px;
 }
 
-/* Capa y coordenadas simétricas para el Arco Numérico (86 a 108) */
+/* Escala y Calibración Milimétrica de Números (86 a 108) */
 .dial-scale {
   position: absolute;
   width: 100%;
@@ -159,77 +171,80 @@ body {
   width: 24px;
   text-align: center;
   height: 20px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* Distribución exacta en base al diseño de la derecha */
-.num-86  { top: 205px; left: 40px;  }
-.num-88  { top: 160px; left: 22px;  }
-.num-90  { top: 112px; left: 16px;  }
-.num-92  { top: 68px;  left: 30px;  }
-.num-94  { top: 34px;  left: 62px;  }
-.num-96  { top: 18px;  left: 105px; }
-.num-98  { top: 18px;  left: 135px; }
-.num-100 { top: 34px;  left: 178px; }
-.num-102 { top: 68px;  left: 208px; }
-.num-104 { top: 112px; left: 222px; }
-.num-106 { top: 160px; left: 215px; }
-.num-108 { top: 205px; left: 195px; }
+/* Coordenadas en base al nuevo tamaño gigante de 270px */
+.num-86  { top: 215px; left: 45px;  }
+.num-88  { top: 168px; left: 24px;  }
+.num-90  { top: 116px; left: 16px;  }
+.num-92  { top: 68px;  left: 32px;  }
+.num-94  { top: 32px;  left: 68px;  }
+.num-96  { top: 16px;  left: 114px; }
+.num-98  { top: 16px;  left: 144px; }
+.num-100 { top: 32px;  left: 190px; }
+.num-102 { top: 68px;  left: 224px; }
+.num-104 { top: 116px; left: 238px; }
+.num-106 { top: 168px; left: 230px; }
+.num-108 { top: 215px; left: 205px; }
 
+/* Círculo Interior del Botón Agrandado */
 .tuner-inner-circle {
-  width: 130px;
-  height: 130px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background: linear-gradient(145deg, #092533, #05161f);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(0, 168, 204, 0.25);
+  border: 2px solid rgba(0, 168, 204, 0.3);
   z-index: 10;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.6);
 }
 
 .power-center-btn {
   background: none;
   border: none;
   color: #8e9297;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.power-center-btn svg { width: 32px; height: 32px; }
-.power-center-btn.playing { color: #00a8cc; filter: drop-shadow(0 0 10px #00a8cc); }
+.power-center-btn svg { width: 36px; height: 36px; }
+.power-center-btn.playing { color: #00a8cc; filter: drop-shadow(0 0 12px #00a8cc); }
 
+/* Fila de Volumen */
 .volume-row {
   display: flex;
   align-items: center;
-  width: 85%;
-  padding: 5px 0;
+  width: 90%;
+  margin: 10px auto;
 }
 
 .vol-btn {
   background: #202225;
   border: none;
   color: #ffffff;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-.vol-btn svg { width: 18px; height: 18px; }
-.status-text { margin-left: 15px; font-size: 14px; color: #00a8cc; font-weight: 500; }
+.vol-btn svg { width: 20px; height: 20px; }
+.status-text { margin-left: 15px; font-size: 15px; color: #00a8cc; font-weight: 500; }
 
 .loading { animation: pulse 1.5s infinite; }
 @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
 
-/* Rejilla de favoritos compacta para evitar que se desborde */
+/* Rejilla de Favoritos Asegurada al fondo (Se muestran las 2 filas completas siempre) */
 .favorites-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -238,6 +253,7 @@ body {
   background-color: rgba(5, 25, 35, 0.95);
   border-top: 1px solid rgba(0, 168, 204, 0.25);
   backdrop-filter: blur(10px);
+  padding-bottom: env(safe-area-inset-bottom); /* Compatible con barras de navegación móviles */
 }
 
 .fav-box {
@@ -245,12 +261,31 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px 0;
+  padding: 18px 0; /* Espacio ideal para que se vea grande y cómodo */
   border-right: 1px solid rgba(0, 168, 204, 0.1);
   border-bottom: 1px solid rgba(0, 168, 204, 0.1);
   cursor: pointer;
 }
 
 .fav-box:nth-child(3n) { border-right: none; }
-.fav-num { font-size: 10px; color: #5e6268; margin-bottom: 2px; }
+.fav-num { font-size: 11px; color: #5e6268; margin-bottom: 2px; }
 .fav-plus { font-size: 16px; color: #8e9297; font-weight: bold; }
+
+/* Vista para Computadoras de Pantalla Ancha */
+@media (min-width: 500px) {
+  body {
+    padding: 20px;
+  }
+  .main-container {
+    height: 800px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 168, 204, 0.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    background-color: rgba(5, 25, 35, 0.5);
+    backdrop-filter: blur(20px);
+  }
+  .favorites-grid {
+    border-bottom-left-radius: 19px;
+    border-bottom-right-radius: 19px;
+  }
+}
