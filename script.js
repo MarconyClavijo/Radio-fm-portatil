@@ -20,7 +20,7 @@ const stations = [
     frequency: "104.7",
     url: "https://innovatestream.pe",
     logo: "img/lafuerte.png",
-    facebook: "https://facebook.com",
+    facebook: "https://www.facebook.com/Radio-La-Fuerte-Pega-Bien-Sitio-Oficial-163103200381593/",
     whatsapp: "https://wa.me"
   },
   {
