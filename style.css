@@ -19,7 +19,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding: 10px 20px;
   background-color: rgba(22, 23, 26, 0.4);
 }
 
@@ -75,7 +75,6 @@ body {
   font-size: 28px;
   margin-right: 15px;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .fav-star-btn.active {
@@ -102,22 +101,48 @@ body {
   min-height: 22px;
 }
 
-/* 1. REGRESAMOS EL DIAL A SU TAMAÑO GRANDE ORIGINAL */
+/* El Dial Circular de Diseño Original */
 .tuner-outer-circle {
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   background: radial-gradient(circle, #0c3547 30%, #061e29 90%);
-  border: 2px solid rgba(0, 168, 204, 0.2);
+  border: 2px solid rgba(0, 168, 204, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 25px rgba(0,0,0,0.8), 0 0 30px rgba(0, 168, 204, 0.15);
-  margin: 10px 0;
+  box-shadow: inset 0 0 25px rgba(0,0,0,0.8), 0 0 35px rgba(0, 168, 204, 0.15);
+  margin: 5px 0;
 }
 
-/* 2. RE-ACOMODAMOS LAS COORDENADAS PARA LA BOLA GRANDE */
+/* La Aguja Física centrada que rota desde el medio exacto */
+.tuner-needle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  transform: rotate(var(--rotation, -120deg));
+  transition: transform 0.2s ease-out;
+  pointer-events: none;
+}
+
+.tuner-needle::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  width: 3px;
+  height: 25px;
+  background-color: #ff5722;
+  box-shadow: 0 0 8px #ff5722;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Capa y coordenadas simétricas para el Arco Numérico (86 a 108) */
 .dial-scale {
   position: absolute;
   width: 100%;
@@ -130,52 +155,38 @@ body {
 .dial-num {
   position: absolute;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
-  width: 20px;
+  color: rgba(255, 255, 255, 0.55);
+  width: 24px;
   text-align: center;
   height: 20px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
-.num-88  { top: 185px; left: 30px;  }
-.num-90  { top: 125px; left: 15px;  }
-.num-92  { top: 65px;  left: 30px;  }
-.num-94  { top: 25px;  left: 65px;  }
-.num-96  { top: 12px;  left: 115px; }
-.num-98  { top: 25px;  left: 165px; }
-.num-100 { top: 65px;  left: 200px; }
-.num-102 { top: 125px; left: 215px; }
-.num-104 { top: 185px; left: 200px; }
-.num-106 { top: 220px; left: 155px; }
-.num-108 { top: 220px; left: 75px;  }
+/* Distribución exacta en base al diseño de la derecha */
+.num-86  { top: 205px; left: 40px;  }
+.num-88  { top: 160px; left: 22px;  }
+.num-90  { top: 112px; left: 16px;  }
+.num-92  { top: 68px;  left: 30px;  }
+.num-94  { top: 34px;  left: 62px;  }
+.num-96  { top: 18px;  left: 105px; }
+.num-98  { top: 18px;  left: 135px; }
+.num-100 { top: 34px;  left: 178px; }
+.num-102 { top: 68px;  left: 208px; }
+.num-104 { top: 112px; left: 222px; }
+.num-106 { top: 160px; left: 215px; }
+.num-108 { top: 205px; left: 195px; }
 
-/* 3. AJUSTAMOS EL CÍRCULO INTERIOR DEL BOTÓN */
 .tuner-inner-circle {
-  width: 135px;
-  height: 135px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   background: linear-gradient(145deg, #092533, #05161f);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(0, 168, 204, 0.3);
+  border: 2px solid rgba(0, 168, 204, 0.25);
   z-index: 10;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
-
-/* 4. ACTUALIZAMOS EL EJE DE LA AGUJA PARA LA BOLA GRANDE */
-.tuner-outer-circle::before {
-  content: '';
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  width: 3px;
-  height: 25px;
-  background-color: #ff5722;
-  box-shadow: 0 0 8px #ff5722;
-  transform: translateX(-50%) rotate(var(--rotation, -135deg));
-  transform-origin: center 110px;
-  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
 .power-center-btn {
@@ -210,7 +221,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
 
 .vol-btn svg { width: 18px; height: 18px; }
@@ -219,7 +229,7 @@ body {
 .loading { animation: pulse 1.5s infinite; }
 @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
 
-/* Rejilla de favoritos compacta y optimizada */
+/* Rejilla de favoritos compacta para evitar que se desborde */
 .favorites-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -235,7 +245,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px 0; /* Ajustado el alto perfecto para móviles */
+  padding: 10px 0;
   border-right: 1px solid rgba(0, 168, 204, 0.1);
   border-bottom: 1px solid rgba(0, 168, 204, 0.1);
   cursor: pointer;
