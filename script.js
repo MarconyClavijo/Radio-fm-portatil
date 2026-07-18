@@ -108,20 +108,41 @@ audio.onerror = () => {
 
 // Carga inicial al entrar a la página
 updateUI();
-// Función para mutear o activar el sonido
-const muteBtn = document.getElementById("vol-toggle");
+// El botón de arriba controla el Silencio (Mute)
 const topMuteBtn = document.getElementById("mute-top");
 
-function toggleMute() {
-    if (audio.muted) {
-        audio.muted = false;
-        status.textContent = playing ? "Sonando..." : "";
-    } else {
-        audio.muted = true;
-        status.textContent = "Mutear";
-    }
+if (topMuteBtn) {
+    topMuteBtn.onclick = () => {
+        audio.muted = !audio.muted;
+        status.textContent = audio.muted ? "Silenciado" : (playing ? "Sonando..." : "");
+    };
 }
 
-if(muteBtn) muteBtn.onclick = toggleMute;
-if(topMuteBtn) topMuteBtn.onclick = toggleMute;
+// Configuración inicial: La radio arranca al 100% de volumen de inmediato
+audio.volume = 1.0; 
+const volBtnAbajo = document.getElementById("vol-toggle");
+let volumeLevel = 0; // El nivel 0 ahora representa el Volumen Máximo inicial
 
+if (volBtnAbajo) {
+    volBtnAbajo.onclick = () => {
+        volumeLevel = (volumeLevel + 1) % 3; // Rota en orden decreciente: Máximo -> Medio -> Bajo
+        
+        if (volumeLevel === 0) {
+            audio.volume = 1.0; // Volumen Alto (100%)
+            status.textContent = "Volumen: Máximo";
+        } else if (volumeLevel === 1) {
+            audio.volume = 0.6; // Volumen Medio (60%)
+            status.textContent = "Volumen: Medio";
+        } else {
+            audio.volume = 0.3; // Volumen Bajo (30%)
+            status.textContent = "Volumen: Bajo";
+        }
+        
+        // El mensaje desaparece en 2 segundos y la música sigue sonando de fondo sin cortes
+        setTimeout(() => {
+            if (playing && status.textContent.includes("Volumen")) {
+                status.textContent = "Sonando...";
+            }
+        }, 2000);
+    };
+}
