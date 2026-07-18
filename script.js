@@ -55,6 +55,15 @@ function updateUI() {
         nameEl.textContent = stations[index].name;
     }
 
+    // Mueve la aguja naranja en base a la frecuencia actual
+    const totalFrecuencias = 108.0 - 87.5;
+    const porcentaje = (freqNum - 87.5) / totalFrecuencias;
+    const gradosRotacion = (porcentaje * 270) - 135; 
+    const dialOuter = document.querySelector(".tuner-outer-circle");
+    if (dialOuter) {
+        dialOuter.style.setProperty('--rotation', gradosRotacion + 'deg');
+    }
+
     // Envía el nombre y dial al tablero del carro por Bluetooth de forma automática
     if ('mediaSession' in navigator) {
         navigator.mediaSession.metadata = new MediaMetadata({
@@ -204,6 +213,23 @@ if ('mediaSession' in navigator) {
         }
     });
 }
+
+// LÓGICA DE LOS 6 BOTONES DE FAVORITOS ABAJO
+const favBoxes = document.querySelectorAll(".fav-box");
+let favoritosGuardados = new Array(6).fill(null);
+
+favBoxes.forEach((box, i) => {
+    box.onclick = () => {
+        if (favoritosGuardados[i] === null) {
+            favoritosGuardados[i] = index; 
+            box.querySelector(".fav-plus").textContent = stations[index].frequency;
+            box.querySelector(".fav-plus").style.color = "#00a8cc";
+        } else {
+            index = favoritosGuardados[i];
+            updateUI();
+        }
+    };
+});
 
 // Carga inicial obligatoria al abrir la web
 updateUI();
