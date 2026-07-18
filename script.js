@@ -18,8 +18,7 @@ const stations = [
   {
     name: "Radio La Fuerte",
     frequency: "104.7",
-    url: "https://panelautodj.innovatestream.pe/7322
-/;"></audio>
+    url: "https://innovatestream.pe",
     logo: "img/lafuerte.png",
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
@@ -43,107 +42,133 @@ const status = document.getElementById("status");
 const audio = document.getElementById("audio");
 const power = document.getElementById("power");
 
+// Configuración inicial: Volumen al 100% de inmediato
+audio.volume = 1.0; 
+let volumeLevel = 0; 
+
 function updateUI() {
-    // Convertimos la frecuencia a número antes de usar toFixed para evitar errores
     const freqNum = parseFloat(stations[index].frequency);
-    freq.textContent = isNaN(freqNum) ? stations[index].frequency : freqNum.toFixed(1);
-    nameEl.textContent = stations[index].name;
+    if (freq) {
+        freq.textContent = isNaN(freqNum) ? stations[index].frequency : freqNum.toFixed(1);
+    }
+    if (nameEl) {
+        nameEl.textContent = stations[index].name;
+    }
     
     if (playing) {
-        status.textContent = "Conectando…";
-        status.classList.add("loading");
+        if (status) {
+            status.textContent = "Conectando…";
+            status.classList.add("loading");
+        }
         
         audio.pause();
-        audio.src = stations[index].url; // Corregido de .stream a .url
+        audio.src = stations[index].url; 
         audio.load(); 
         
         audio.play().catch(e => {
             if (e.name !== 'AbortError') {
-                status.textContent = "Sin señal";
-                status.classList.remove("loading");
+                if (status) {
+                    status.textContent = "Sin señal";
+                    status.classList.remove("loading");
+                }
                 playing = false;
-                power.classList.remove("playing");
+                if (power) power.classList.remove("playing");
             }
         });
     }
 }
 
-document.getElementById("prev").onclick = () => {
-    index = (index - 1 + stations.length) % stations.length; // Corregido STATIONS a stations
-    updateUI();
-};
-
-document.getElementById("next").onclick = () => {
-    index = (index + 1) % stations.length; // Corregido STATIONS a stations
-    updateUI();
-};
-
-power.onclick = () => {
-    if (!playing) {
-        playing = true;
-        power.classList.add("playing");
+// Botones de Navegación (Flechas)
+const prevBtn = document.getElementById("prev");
+if (prevBtn) {
+    prevBtn.onclick = () => {
+        index = (index - 1 + stations.length) % stations.length;
         updateUI();
-    } else {
-        playing = false;
-        power.classList.remove("playing");
-        audio.pause();
-        audio.src = ""; 
-        status.textContent = "";
+    };
+}
+
+const nextBtn = document.getElementById("next");
+if (nextBtn) {
+    nextBtn.onclick = () => {
+        index = (index + 1) % stations.length;
+        updateUI();
+    };
+}
+
+// Botón de Encendido Central
+if (power) {
+    power.onclick = () => {
+        if (!playing) {
+            playing = true;
+            power.classList.add("playing");
+            updateUI();
+        } else {
+            playing = false;
+            power.classList.remove("playing");
+            audio.pause();
+            audio.src = ""; 
+            if (status) {
+                status.textContent = "";
+                status.classList.remove("loading");
+            }
+        }
+    };
+}
+
+// Controladores de estado de reproducción
+audio.onplaying = () => {
+    if (status) {
+        status.textContent = "Sonando...";
         status.classList.remove("loading");
     }
-};
-
-audio.onplaying = () => {
-    status.textContent = "";
-    status.classList.remove("loading");
 };
 
 audio.onerror = () => {
     if (playing && audio.src !== "") {
-        status.textContent = "Sin señal";
-        status.classList.remove("loading");
-        power.classList.remove("playing");
+        if (status) {
+            status.textContent = "Sin señal";
+            status.classList.remove("loading");
+        }
+        if (power) power.classList.remove("playing");
         playing = false;
     }
 };
 
-// Carga inicial al entrar a la página
-updateUI();
 // El botón de arriba controla el Silencio (Mute)
 const topMuteBtn = document.getElementById("mute-top");
-
 if (topMuteBtn) {
     topMuteBtn.onclick = () => {
         audio.muted = !audio.muted;
-        status.textContent = audio.muted ? "Silenciado" : (playing ? "Sonando..." : "");
+        if (status) {
+            status.textContent = audio.muted ? "Silenciado" : (playing ? "Sonando..." : "");
+        }
     };
 }
 
-// Configuración inicial: La radio arranca al 100% de volumen de inmediato
-audio.volume = 1.0; 
+// El botón de abajo controla el volumen en 3 niveles (Máximo -> Medio -> Bajo)
 const volBtnAbajo = document.getElementById("vol-toggle");
-let volumeLevel = 0; // El nivel 0 ahora representa el Volumen Máximo inicial
-
 if (volBtnAbajo) {
     volBtnAbajo.onclick = () => {
-        volumeLevel = (volumeLevel + 1) % 3; // Rota en orden decreciente: Máximo -> Medio -> Bajo
+        volumeLevel = (volumeLevel + 1) % 3; 
         
         if (volumeLevel === 0) {
-            audio.volume = 1.0; // Volumen Alto (100%)
-            status.textContent = "Volumen: Máximo";
+            audio.volume = 1.0; 
+            if (status) status.textContent = "Volumen: Máximo";
         } else if (volumeLevel === 1) {
-            audio.volume = 0.6; // Volumen Medio (60%)
-            status.textContent = "Volumen: Medio";
+            audio.volume = 0.6; 
+            if (status) status.textContent = "Volumen: Medio";
         } else {
-            audio.volume = 0.3; // Volumen Bajo (30%)
-            status.textContent = "Volumen: Bajo";
+            audio.volume = 0.3; 
+            if (status) status.textContent = "Volumen: Bajo";
         }
         
-        // El mensaje desaparece en 2 segundos y la música sigue sonando de fondo sin cortes
         setTimeout(() => {
-            if (playing && status.textContent.includes("Volumen")) {
+            if (playing && status && status.textContent.includes("Volumen")) {
                 status.textContent = "Sonando...";
             }
         }, 2000);
     };
 }
+
+// Carga inicial obligatoria
+updateUI();
