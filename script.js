@@ -56,11 +56,11 @@ function updateUI() {
     if (nameEl) {
         nameEl.textContent = stations[index].name;
     }
-
-        // Hace girar la aguja de forma exacta desde el 86.0 al 108.0
+  
+            // Calibración exacta de la aguja con los números del arco
     const totalFrecuencias = 108.0 - 86.0;
     const porcentaje = (freqNum - 86.0) / totalFrecuencias;
-    const gradosRotacion = (porcentaje * 240) - 120; // Arco simétrico de 240 grados
+    const gradosRotacion = (porcentaje * 236) - 118; // Ajustado de 240 a 236 para centrar la aguja perfectamente
     
     const needleElement = document.getElementById("needle");
     if (needleElement) {
