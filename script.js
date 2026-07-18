@@ -10,7 +10,7 @@ const stations = [
   {
     name: "Radio Stereo M",
     frequency: "101.5",
-    url: "https://sonic.globalstream.pro/8108/stream?t="+Date.now()",
+    url: "https://sonic.globalstream.pro/8108/stream",
     logo: "https://i.postimg.cc/L8bjb6K5/1687464033296.png",
     facebook: "https://www.facebook.com/share/1Dib9eQUFD/",
     whatsapp: "https://wa.me/51942883375"
@@ -33,7 +33,6 @@ const stations = [
   }
 ];
 
-
 let index = 0;
 let playing = false;
 
@@ -44,15 +43,17 @@ const audio = document.getElementById("audio");
 const power = document.getElementById("power");
 
 function updateUI() {
-    freq.textContent = STATIONS[index].frequency.toFixed(1);
-    nameEl.textContent = STATIONS[index].name;
+    // Convertimos la frecuencia a número antes de usar toFixed para evitar errores
+    const freqNum = parseFloat(stations[index].frequency);
+    freq.textContent = isNaN(freqNum) ? stations[index].frequency : freqNum.toFixed(1);
+    nameEl.textContent = stations[index].name;
     
     if (playing) {
         status.textContent = "Conectando…";
         status.classList.add("loading");
         
         audio.pause();
-        audio.src = STATIONS[index].stream; 
+        audio.src = stations[index].url; // Corregido de .stream a .url
         audio.load(); 
         
         audio.play().catch(e => {
@@ -67,12 +68,12 @@ function updateUI() {
 }
 
 document.getElementById("prev").onclick = () => {
-    index = (index - 1 + STATIONS.length) % STATIONS.length;
+    index = (index - 1 + stations.length) % stations.length; // Corregido STATIONS a stations
     updateUI();
 };
 
 document.getElementById("next").onclick = () => {
-    index = (index + 1) % STATIONS.length;
+    index = (index + 1) % stations.length; // Corregido STATIONS a stations
     updateUI();
 };
 
@@ -105,4 +106,5 @@ audio.onerror = () => {
     }
 };
 
+// Carga inicial al entrar a la página
 updateUI();
