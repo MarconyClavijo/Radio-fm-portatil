@@ -21,7 +21,7 @@
   <!-- Contenedor Principal -->
   <div class="main-container">
     
-        <!-- Frecuencia Gigante con Estrella de Favoritos -->
+    <!-- Frecuencia Gigante con Estrella -->
     <div class="display-container">
       <button class="nav-arrow" id="prev">I◄</button>
       <div class="freq-box">
@@ -31,14 +31,25 @@
       </div>
       <button class="nav-arrow" id="next">►I</button>
     </div>
-    
+
     <!-- Nombre de la Emisora Activa -->
     <div class="station-name" id="station">Buscando señal...</div>
 
-    <!-- Sintonizador Circular Analógico -->
+    <!-- Sintonizador Circular Analógico con Números Reales -->
     <div class="tuner-outer-circle">
-      <!-- Marcas visuales del dial (88..96..108) -->
-      <div class="dial-scale"></div>
+      <div class="dial-scale">
+        <span class="dial-num num-88">88</span>
+        <span class="dial-num num-90">90</span>
+        <span class="dial-num num-92">92</span>
+        <span class="dial-num num-94">94</span>
+        <span class="dial-num num-96">96</span>
+        <span class="dial-num num-98">98</span>
+        <span class="dial-num num-100">100</span>
+        <span class="dial-num num-102">102</span>
+        <span class="dial-num num-104">104</span>
+        <span class="dial-num num-106">106</span>
+        <span class="dial-num num-108">108</span>
+      </div>
       
       <!-- Círculo central con botón de encendido -->
       <div class="tuner-inner-circle">
@@ -58,7 +69,7 @@
       <div class="status-text" id="status"></div>
     </div>
 
-    <!-- Rejilla de Estaciones Favoritas (01 al 06) -->
+    <!-- Rejilla de Estaciones Favoritas Ajustada (01 al 06) -->
     <div class="favorites-grid">
       <div class="fav-box" data-index="0"><span class="fav-num">01</span><span class="fav-plus">+</span></div>
       <div class="fav-box" data-index="1"><span class="fav-num">02</span><span class="fav-plus">+</span></div>
