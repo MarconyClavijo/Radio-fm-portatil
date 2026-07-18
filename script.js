@@ -31,7 +31,6 @@ const stations = [
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
   },
-  
 ];
 
 let index = 0;
