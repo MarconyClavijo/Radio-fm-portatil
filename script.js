@@ -20,7 +20,7 @@ const stations = [
     frequency: "104.7",
     url: "https://innovatestream.pe",
     logo: "img/lafuerte.png",
-    facebook: "https://www.facebook.com/Radio-La-Fuerte-Pega-Bien-Sitio-Oficial-163103200381593/",
+    facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
   },
   {
@@ -42,7 +42,7 @@ const status = document.getElementById("status");
 const audio = document.getElementById("audio");
 const power = document.getElementById("power");
 
-// Configuración inicial: Volumen al 100% de inmediato
+// Configuración inicial de volumen al 100% de inmediato
 audio.volume = 1.0; 
 let volumeLevel = 0; 
 
@@ -66,19 +66,20 @@ function updateUI() {
         audio.load(); 
         
         audio.play().catch(e => {
+            // CORRECCIÓN CLAVE 1: Si la radio seleccionada está apagada, el botón general NO se apaga
             if (e.name !== 'AbortError') {
                 if (status) {
                     status.textContent = "Sin señal";
                     status.classList.remove("loading");
                 }
-                playing = false;
-                if (power) power.classList.remove("playing");
+                // Mantenemos la interfaz en modo encendido para cambiar de dial libremente
+                if (power) power.classList.add("playing"); 
             }
         });
     }
 }
 
-// Botones de Navegación (Flechas)
+// Botones de Navegación de emisoras (Flechas)
 const prevBtn = document.getElementById("prev");
 if (prevBtn) {
     prevBtn.onclick = () => {
@@ -115,7 +116,7 @@ if (power) {
     };
 }
 
-// Controladores de estado de reproducción
+// Controladores de estado del reproductor de audio
 audio.onplaying = () => {
     if (status) {
         status.textContent = "Sonando...";
@@ -124,13 +125,14 @@ audio.onplaying = () => {
 };
 
 audio.onerror = () => {
+    // CORRECCIÓN CLAVE 2: Si la radio está fuera del aire, el sistema no se rinde ni se congela.
+    // Mantenemos 'playing = true' esperando a que el usuario pase de dial.
     if (playing && audio.src !== "") {
         if (status) {
             status.textContent = "Sin señal";
             status.classList.remove("loading");
         }
-        if (power) power.classList.remove("playing");
-        playing = false;
+        if (power) power.classList.add("playing"); 
     }
 };
 
@@ -145,7 +147,7 @@ if (topMuteBtn) {
     };
 }
 
-// El botón de abajo controla el volumen en 3 niveles (Máximo -> Medio -> Bajo)
+// El botón de abajo controla el volumen en 3 niveles decrecientes (Máximo -> Medio -> Bajo)
 const volBtnAbajo = document.getElementById("vol-toggle");
 if (volBtnAbajo) {
     volBtnAbajo.onclick = () => {
@@ -170,5 +172,5 @@ if (volBtnAbajo) {
     };
 }
 
-// Carga inicial obligatoria
+// Carga inicial obligatoria al abrir la web
 updateUI();
