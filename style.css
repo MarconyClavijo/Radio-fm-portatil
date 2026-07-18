@@ -105,8 +105,8 @@ body {
 /* 1. REGRESAMOS EL DIAL A SU TAMAÑO GRANDE ORIGINAL */
 .tuner-outer-circle {
   position: relative;
-  width: 250px; /* Agrandado de 230px a 250px */
-  height: 250px; /* Agrandado de 230px a 250px */
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   background: radial-gradient(circle, #0c3547 30%, #061e29 90%);
   border: 2px solid rgba(0, 168, 204, 0.2);
@@ -118,6 +118,25 @@ body {
 }
 
 /* 2. RE-ACOMODAMOS LAS COORDENADAS PARA LA BOLA GRANDE */
+.dial-scale {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.dial-num {
+  position: absolute;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  width: 20px;
+  text-align: center;
+  height: 20px;
+  font-weight: bold;
+}
+
 .num-88  { top: 185px; left: 30px;  }
 .num-90  { top: 125px; left: 15px;  }
 .num-92  { top: 65px;  left: 30px;  }
@@ -132,7 +151,7 @@ body {
 
 /* 3. AJUSTAMOS EL CÍRCULO INTERIOR DEL BOTÓN */
 .tuner-inner-circle {
-  width: 135px; /* Agrandado para mantener la proporción estética */
+  width: 135px;
   height: 135px;
   border-radius: 50%;
   background: linear-gradient(145deg, #092533, #05161f);
@@ -155,21 +174,8 @@ body {
   background-color: #ff5722;
   box-shadow: 0 0 8px #ff5722;
   transform: translateX(-50%) rotate(var(--rotation, -135deg));
-  transform-origin: center 110px; /* Ajustado el centro de rotación */
+  transform-origin: center 110px;
   z-index: 5;
-}
-
-/* 5. REDUCIMOS EL ALTO DE LOS FAVORITOS PARA QUE NO SE SALGAN DE LA PANTALLA */
-.fav-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 0; /* Reducido el relleno de 15px a 8px */
-  border-right: 1px solid rgba(0, 168, 204, 0.1);
-  border-bottom: 1px solid rgba(0, 168, 204, 0.1);
-  cursor: pointer;
-  
 }
 
 .power-center-btn {
@@ -213,7 +219,7 @@ body {
 .loading { animation: pulse 1.5s infinite; }
 @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
 
-/* Rejilla de favoritos corregida y compacta para celulares */
+/* Rejilla de favoritos compacta y optimizada */
 .favorites-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -229,7 +235,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 15px 0;
+  padding: 10px 0; /* Ajustado el alto perfecto para móviles */
   border-right: 1px solid rgba(0, 168, 204, 0.1);
   border-bottom: 1px solid rgba(0, 168, 204, 0.1);
   cursor: pointer;
@@ -238,4 +244,3 @@ body {
 .fav-box:nth-child(3n) { border-right: none; }
 .fav-num { font-size: 10px; color: #5e6268; margin-bottom: 2px; }
 .fav-plus { font-size: 16px; color: #8e9297; font-weight: bold; }
-
