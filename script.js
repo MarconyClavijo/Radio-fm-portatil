@@ -57,13 +57,14 @@ function updateUI() {
         nameEl.textContent = stations[index].name;
     }
 
-    // Mueve la aguja naranja en base a la frecuencia actual
-    const totalFrecuencias = 108.0 - 87.5;
-    const porcentaje = (freqNum - 87.5) / totalFrecuencias;
-    const gradosRotacion = (porcentaje * 270) - 135; 
-    const dialOuter = document.querySelector(".tuner-outer-circle");
-    if (dialOuter) {
-        dialOuter.style.setProperty('--rotation', gradosRotacion + 'deg');
+        // Hace girar la aguja de forma exacta desde el 86.0 al 108.0
+    const totalFrecuencias = 108.0 - 86.0;
+    const porcentaje = (freqNum - 86.0) / totalFrecuencias;
+    const gradosRotacion = (porcentaje * 240) - 120; // Arco simétrico de 240 grados
+    
+    const needleElement = document.getElementById("needle");
+    if (needleElement) {
+        needleElement.style.setProperty('--rotation', gradosRotacion + 'deg');
     }
 
     // Envía el nombre y dial al tablero del carro por Bluetooth de forma automática
