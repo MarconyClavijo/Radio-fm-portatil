@@ -108,3 +108,20 @@ audio.onerror = () => {
 
 // Carga inicial al entrar a la página
 updateUI();
+// Función para mutear o activar el sonido
+const muteBtn = document.getElementById("vol-toggle");
+const topMuteBtn = document.getElementById("mute-top");
+
+function toggleMute() {
+    if (audio.muted) {
+        audio.muted = false;
+        status.textContent = playing ? "Sonando..." : "";
+    } else {
+        audio.muted = true;
+        status.textContent = "Mutear";
+    }
+}
+
+if(muteBtn) muteBtn.onclick = toggleMute;
+if(topMuteBtn) topMuteBtn.onclick = toggleMute;
+
