@@ -8,6 +8,14 @@ const stations = [
     whatsapp: "https://wa.me"
   },
   {
+    name: "Radio La Patrona",
+    frequency: "96.3",
+    url: "https://sonic.globalstream.pro/8080/stream",
+    logo: "img/lapatrona.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+  }
+  {
     name: "Radio Stereo M",
     frequency: "101.5",
     url: "https://sonic.globalstream.pro/8108/stream",
@@ -23,14 +31,7 @@ const stations = [
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
   },
-  {
-    name: "Radio La Patrona",
-    frequency: "96.3",
-    url: "https://sonic.globalstream.pro/8080/stream",
-    logo: "img/lapatrona.png",
-    facebook: "https://facebook.com",
-    whatsapp: "https://wa.me"
-  }
+  
 ];
 
 let index = 0;
