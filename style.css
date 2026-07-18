@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: #121315;
+  background: radial-gradient(circle at center, #0a4d68 0%, #051923 100%);
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -96,44 +96,51 @@ body {
   min-height: 22px;
 }
 
-/* Sintonizador Circular Analógico (Estilo Dial) */
+/* Sintonizador Circular con Brillo Azul */
 .tuner-outer-circle {
   position: relative;
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  background: radial-gradient(circle, #1a1b1e 40%, #141517 70%);
-  border: 2px dashed #2c2e33;
+  background: radial-gradient(circle, #0c3547 30%, #061e29 90%);
+  border: 2px solid rgba(0, 168, 204, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.6), 0 4px 15px rgba(0,0,0,0.4);
+  box-shadow: inset 0 0 25px rgba(0,0,0,0.8), 0 0 30px rgba(0, 168, 204, 0.2);
   margin: 20px 0;
 }
 
-/* Efecto de la aguja naranja en el dial */
+/* El punto de luz turquesa indicador del dial */
 .tuner-outer-circle::before {
   content: '';
   position: absolute;
-  top: 15px;
-  left: 50%;
-  width: 3px;
-  height: 25px;
-  background-color: #ff5722;
-  transform: translateX(-50%);
-  border-radius: 2px;
+  bottom: 30px;
+  left: 45px;
+  width: 12px;
+  height: 12px;
+  background-color: #00a8cc;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00a8cc, 0 0 25px #00a8cc;
+  transform: none;
 }
 
 .tuner-inner-circle {
-  width: 130px;
-  height: 130px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  background-color: #0b0c0d;
+  background: linear-gradient(145deg, #092533, #05161f);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 6px solid #202225;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  border: 2px solid rgba(0, 168, 204, 0.4);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+/* Cambio de color al botón de encendido central */
+.power-center-btn.playing {
+  color: #00a8cc;
+  filter: drop-shadow(0 0 12px #00a8cc);
 }
 
 /* Botón de Encendido Central */
@@ -237,4 +244,12 @@ body {
   font-size: 20px;
   color: #8e9297;
   font-weight: 300;
+}
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  background-color: rgba(5, 25, 35, 0.85);
+  border-top: 1px solid rgba(0, 168, 204, 0.2);
+  backdrop-filter: blur(10px);
 }
