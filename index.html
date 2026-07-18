@@ -1,50 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="theme-color" content="#0a0a0a">
-  <link rel="manifest" href="manifest.json">
-    
-  <title>Radio fm portátil</title>
+  <meta name="theme-color" content="#121315">
+  <title>Radio FM Portátil</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="radio">
-    <div class="frequency" id="frequency"></div>
-    <div class="station" id="station">Radio</div>
+  <!-- Barra Superior -->
+  <div class="top-bar">
+    <span class="app-title">FM Radio</span>
+    <button class="top-btn" id="mute-top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/></svg>
+    </button>
+  </div>
 
-    <div class="controls">
-      <button class="btn" id="prev">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M19 20L9 12l10-8v16z" />
-          <path d="M5 19V5" />
-        </svg>
-      </button>
-
-      <button class="btn btn-power" id="power">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2v10" />
-          <path d="M18.4 6.6a9 9 0 1 1-12.77.04" />
-        </svg>
-      </button>
-
-      <button class="btn" id="next">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 4l10 8-10 8V4z" />
-          <path d="M19 5v14" />
-        </svg>
-      </button>
+  <!-- Contenedor Principal -->
+  <div class="main-container">
+    
+    <!-- Frecuencia Gigante -->
+    <div class="display-container">
+      <button class="nav-arrow" id="prev">I◄</button>
+      <div class="freq-box">
+        <span class="freq-number" id="frequency">87.5</span>
+        <span class="freq-unit">MHz</span>
+      </div>
+      <button class="nav-arrow" id="next">►I</button>
     </div>
 
-    <div class="status" id="status"></div>
+    <!-- Nombre de la Emisora Activa -->
+    <div class="station-name" id="station">Buscando señal...</div>
+
+    <!-- Sintonizador Circular Analógico -->
+    <div class="tuner-outer-circle">
+      <!-- Marcas visuales del dial (88..96..108) -->
+      <div class="dial-scale"></div>
+      
+      <!-- Círculo central con botón de encendido -->
+      <div class="tuner-inner-circle">
+        <button class="power-center-btn" id="power">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v10" /><path d="M18.4 6.6a9 9 0 1 1-12.77.04" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Botón de Volumen Flotante Inferior -->
+    <div class="volume-row">
+      <button class="vol-btn" id="vol-toggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      </button>
+      <div class="status-text" id="status"></div>
+    </div>
+
+    <!-- Rejilla de Estaciones Favoritas (01 al 06) -->
+    <div class="favorites-grid">
+      <div class="fav-box" data-index="0"><span class="fav-num">01</span><span class="fav-plus">+</span></div>
+      <div class="fav-box" data-index="1"><span class="fav-num">02</span><span class="fav-plus">+</span></div>
+      <div class="fav-box" data-index="2"><span class="fav-num">03</span><span class="fav-plus">+</span></div>
+      <div class="fav-box" data-index="3"><span class="fav-num">04</span><span class="fav-plus">+</span></div>
+      <div class="fav-box" data-index="4"><span class="fav-num">05</span><span class="fav-plus">+</span></div>
+      <div class="fav-box" data-index="5"><span class="fav-num">06</span><span class="fav-plus">+</span></div>
+    </div>
+
   </div>
 
   <audio id="audio" crossorigin="anonymous" preload="none"></audio>
-
   <script src="script.js"></script>
 </body>
 </html>
