@@ -1,30 +1,38 @@
-const STATIONS = [
-    { name: "Radio Klassik Stephansdom, Viena, Austria", frequency: 88.1, stream: "https://radioklassikstephansdom.ice.infomaniak.ch/radioklassikstephansdom.mp3" },
-    { name: "Radio Sacred Music, Iowa, EE.UU.", frequency: 88.3, stream: "https://das-edge15-live365-dal02.cdnstream.com/a39922" },
-    { name: "Radio Swiss Classic, Basilea, Suiza", frequency: 88.5, stream: "https://stream.srg-ssr.ch/m/rsc_de/mp3_128" },
-    { name: "CapRadio Music, Sacramento CA, EE.UU.", frequency: 88.9, stream: "https://18433.live.streamtheworld.com/KXPRAAC.aac" },
-    { name: "Radio Classical Music, Moscú, Rusia", frequency: 89.1, stream: "https://pub0202.101.ru:8443/stream/pro/aac/64/38" }, 
-    { name: "Classic FM, Londres, Inglaterra", frequency: 89.4, stream: "https://media-ice.musicradio.com/ClassicFMMP3" },
-    { name: "0R - Piano Classical, Berlin, Germany", frequency: 89.6, stream: "https://0nlineradio.radioho.st/classical-classical-piano?ref=radio-browser26" },
-    { name: "0R - Bach Classical, Renania, Alemania", frequency: 89.8, stream: "https://0nlineradio.radioho.st/0r-bach?ref=radio-browser26" },
-    { name: "100 Greatest Classical Music, 	Ontario, Canada", frequency: 90.1, stream: "https://az1.mediacp.eu/listen/100greatestclassicalmusic/radio.mp3" },
-    { name: "Classical Radio International, Londres, Inglaterra", frequency: 90.3, stream: "https://ec3.yesstreaming.net:3625/stream" },
-    { name: "Pop Classical Music, Moscú, Rusia", frequency: 90.5, stream: "https://pub0202.101.ru:8443/stream/pro/aac/64/97" },
-    { name: "Classical Calm by King FM, Seattle, EE.UU", frequency: 90.7, stream: "https://classicalking.streamguys1.com/evergreen-aac-128k" },
-    { name: "Classical 90.3, Shanghái, China", frequency: 90.9, stream: "https://lhttp.qingting.fm/live/267/64k.mp3" },
-    { name: "KUSC Classical FM 91.1, Los Ángeles, EE.UU", frequency: 91.1, stream: "https://23023.live.streamtheworld.com/KUSCMP96_SC" },
-    { name: "Splash - Classical, Zaragoza, España", frequency: 91.3, stream: "https://ais-sa2.cdnstream1.com/2208_128.mp3" },
-    { name: "Radio SomaFM Groove Salad, SF, EE.UU", frequency: 96.2, stream: "https://ice5.somafm.com/groovesalad-128-mp3" },
-    { name: "Radio SomaFM Drone Zone, SF, EE.UU.", frequency: 96.5, stream: "https://ice5.somafm.com/dronezone-128-mp3" },
-    { name: "Chinese Classical Music, Beijing, China.", frequency: 96.7, stream: "https://radio.chinesemusicworld.com/chinesemusic.mp3" },
-    { name: "Radio Swiss Jazz, Basilea, Suiza", frequency: 96.9, stream: "https://stream.srg-ssr.ch/m/rsj/mp3_128" },
-    { name: "Radio Italia anni 60, Milán, Italia", frequency: 97.1, stream: "https://ice12.fluidstream.net/ria60_mi.aac" },
-    { name: "Radio Always Elvis, Randers, Denmark", frequency: 97.3, stream: "https://radioserver.dk/alwayselvisradio" },
-    { name: "Radio Ennio Morricone, Moscú, Rusia", frequency: 97.5, stream: "https://pub0202.101.ru:8443/stream/pro/aac/64/395" },
-    { name: "Radio EBS | Movie Soundtracks, Romania", frequency: 97.9, stream: "https://azura.ebsmedia.ro/listen/movies/movies128.mp3" },
-    { name: "Radio Movie Soundtracks Hits, EE.UU.", frequency: 98.1, stream: "https://strm112.1.fm/moviesoundtracks_mobile_mp3" },
-    { name: "BBC World Service, Londres, Inglaterra", frequency: 98.3, stream: "https://stream.live.vc.bbcmedia.co.uk/bbc_world_service" },
+const stations = [
+  {
+    name: "Radio Antena 10",
+    frequency: "88.9",
+    url: "http://IP_DE_ANTENA10:PUERTO/stream",
+    logo: "img/antena10.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+  },
+  {
+    name: "Radio Stereo M",
+    frequency: "101.5",
+    url: "https://sonic.globalstream.pro/8108/stream?t="+Date.now()",
+    logo: "https://i.postimg.cc/L8bjb6K5/1687464033296.png",
+    facebook: "https://www.facebook.com/share/1Dib9eQUFD/",
+    whatsapp: "https://wa.me/51942883375"
+  },
+  {
+    name: "Radio La Fuerte",
+    frequency: "104.7",
+    url: "http://IP_DE_LAFUERTE:PUERTO/live",
+    logo: "img/lafuerte.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+  },
+  {
+    name: "Radio La Patrona",
+    frequency: "96.3",
+    url: "http://IP_DE_PATRONA:PUERTO/stream",
+    logo: "img/lapatrona.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+  }
 ];
+
 
 let index = 0;
 let playing = false;
