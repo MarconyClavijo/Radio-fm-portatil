@@ -14,7 +14,7 @@ const stations = [
     logo: "img/lapatrona.png",
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
-  }
+  },
   {
     name: "Radio Stereo M",
     frequency: "101.5",
@@ -30,7 +30,7 @@ const stations = [
     logo: "img/lafuerte.png",
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
-  },
+  }
 ];
 
 let index = 0;
@@ -54,6 +54,16 @@ function updateUI() {
     if (nameEl) {
         nameEl.textContent = stations[index].name;
     }
+
+    // Envía el nombre y dial al tablero del carro por Bluetooth de forma automática
+    if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: stations[index].name,
+            artist: stations[index].frequency + " MHz",
+            album: "Radio FM Portátil",
+            artwork: [{ src: stations[index].logo, sizes: '512x512', type: 'image/png' }]
+        });
+    }
     
     if (playing) {
         if (status) {
@@ -66,13 +76,11 @@ function updateUI() {
         audio.load(); 
         
         audio.play().catch(e => {
-            // CORRECCIÓN CLAVE 1: Si la radio seleccionada está apagada, el botón general NO se apaga
             if (e.name !== 'AbortError') {
                 if (status) {
                     status.textContent = "Sin señal";
                     status.classList.remove("loading");
                 }
-                // Mantenemos la interfaz en modo encendido para cambiar de dial libremente
                 if (power) power.classList.add("playing"); 
             }
         });
@@ -125,8 +133,6 @@ audio.onplaying = () => {
 };
 
 audio.onerror = () => {
-    // CORRECCIÓN CLAVE 2: Si la radio está fuera del aire, el sistema no se rinde ni se congela.
-    // Mantenemos 'playing = true' esperando a que el usuario pase de dial.
     if (playing && audio.src !== "") {
         if (status) {
             status.textContent = "Sin señal";
@@ -172,33 +178,32 @@ if (volBtnAbajo) {
     };
 }
 
-// Carga inicial obligatoria al abrir la web
-updateUI();
-
 // CONTROL DESDE EL TIMÓN DEL CARRO (Media Session API)
 if ('mediaSession' in navigator) {
-    // Registra el botón de "Siguiente" del timón o comandos de voz
     navigator.mediaSession.setActionHandler('nexttrack', () => {
-        const nextBtn = document.getElementById("next");
-        if (nextBtn) nextBtn.click(); // Simula físicamente presionar Siguiente en la web
+        const next = document.getElementById("next");
+        if (next) next.click();
     });
 
-    // Registra el botón de "Atrás" del timón
     navigator.mediaSession.setActionHandler('previoustrack', () => {
-        const prevBtn = document.getElementById("prev");
-        if (prevBtn) prevBtn.click(); // Simula físicamente presionar Atrás en la web
-    ```
+        const prev = document.getElementById("prev");
+        if (prev) prev.click();
+    });
 
-### 🚨 Un último detalle importante para que se vea el nombre en el carro
-Para que el auto pinte los textos en su pantalla cada vez que pases de estación, debemos decirle a las funciones que actualicen los datos del sistema. Busca tu función **`updateUI()`** en la mitad del código y agrega estas líneas adentro, justo debajo de donde dice `nameEl.textContent = stations[index].name;`:
+    navigator.mediaSession.setActionHandler('play', () => {
+        if (!playing) {
+            const btnPower = document.getElementById("power");
+            if (btnPower) btnPower.click();
+        }
+    });
 
-```javascript
-    // Envía el nombre y dial al tablero del carro por Bluetooth
-    if ('mediaSession' in navigator) {
-        navigator.mediaSession.metadata = new MediaMetadata({
-            title: stations[index].name,
-            artist: stations[index].frequency + " MHz",
-            album: "Radio FM Portátil",
-            artwork: [{ src: stations[index].logo, sizes: '512x512', type: 'image/png' }]
-        });
-    }
+    navigator.mediaSession.setActionHandler('pause', () => {
+        if (playing) {
+            const btnPower = document.getElementById("power");
+            if (btnPower) btnPower.click();
+        }
+    });
+}
+
+// Carga inicial obligatoria al abrir la web
+updateUI();
