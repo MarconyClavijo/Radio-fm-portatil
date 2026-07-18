@@ -1,8 +1,8 @@
 const stations = [
   {
-    name: "Radio Antena 10",
-    frequency: "88.9",
-    url: "http://IP_DE_ANTENA10:PUERTO/stream",
+    name: "Radio La Tremenda",
+    frequency: "106.5",
+    url: "https://sonic.globalstream.pro/8108/stream",
     logo: "img/antena10.png",
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
@@ -31,14 +31,6 @@ const stations = [
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
   }
-  {
-    name: "Radio La Tremenda",
-    frequency: "106.5",
-    url: "https://radiostreaming.pro/8238/stream",
-    logo: "img/latremenda.png",
-    facebook: "https://facebook.com",
-    whatsapp: "https://wa.me"
-}
 ];
 
 let index = 0;
