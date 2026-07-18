@@ -31,6 +31,14 @@ const stations = [
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
   }
+  {
+    name: "Radio La Tremenda",
+    frequency: "106.5",
+    url: "https://radiostreaming.pro/8238/stream",
+    logo: "img/latremenda.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+}
 ];
 
 let index = 0;
