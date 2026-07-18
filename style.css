@@ -1,9 +1,8 @@
-/* Configuración General del Sistema */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -16,17 +15,16 @@ body {
   overflow: hidden;
 }
 
-/* Barra Superior */
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background-color: #16171a;
+  padding: 12px 20px;
+  background-color: rgba(22, 23, 26, 0.4);
 }
 
 .app-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -39,23 +37,20 @@ body {
   cursor: pointer;
 }
 
-/* Contenedor del Reproductor Portátil */
 .main-container {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0 0 0;
 }
 
-/* Frecuencia Digital Gigante */
 .display-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 85%;
-  margin-top: 10px;
+  width: 90%;
+  margin-top: 5px;
 }
 
 .nav-arrow {
@@ -65,85 +60,123 @@ body {
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
-  padding: 10px;
 }
 
 .freq-box {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
+}
+
+.fav-star-btn {
+  background: none;
+  border: none;
+  color: #8e9297;
+  font-size: 28px;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fav-star-btn.active {
+  color: #00a8cc;
+  text-shadow: 0 0 10px #00a8cc;
 }
 
 .freq-number {
-  font-size: 72px;
+  font-size: 64px;
   font-weight: 300;
-  letter-spacing: -1px;
 }
 
 .freq-unit {
-  font-size: 18px;
+  font-size: 16px;
   color: #8e9297;
-  margin-left: 8px;
-  font-weight: 400;
+  margin-left: 5px;
 }
 
-/* Nombre de la Radio */
 .station-name {
   font-size: 15px;
   color: #8e9297;
-  margin-top: -10px;
   text-align: center;
+  margin-top: -5px;
   min-height: 22px;
 }
 
-/* Sintonizador Circular con Brillo Azul */
+/* El Dial Circular con la Aguja Rotativa */
 .tuner-outer-circle {
   position: relative;
-  width: 240px;
-  height: 240px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
   background: radial-gradient(circle, #0c3547 30%, #061e29 90%);
-  border: 2px solid rgba(0, 168, 204, 0.3);
+  border: 2px solid rgba(0, 168, 204, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 25px rgba(0,0,0,0.8), 0 0 30px rgba(0, 168, 204, 0.2);
-  margin: 20px 0;
+  box-shadow: inset 0 0 25px rgba(0,0,0,0.8), 0 0 30px rgba(0, 168, 204, 0.15);
 }
 
-/* El punto de luz turquesa indicador del dial */
+/* Aguja indicadora naranja controlada por JavaScript */
 .tuner-outer-circle::before {
   content: '';
   position: absolute;
-  bottom: 30px;
-  left: 45px;
-  width: 12px;
-  height: 12px;
-  background-color: #00a8cc;
-  border-radius: 50%;
-  box-shadow: 0 0 15px #00a8cc, 0 0 25px #00a8cc;
-  transform: none;
+  top: 15px;
+  left: 50%;
+  width: 3px;
+  height: 25px;
+  background-color: #ff5722;
+  box-shadow: 0 0 8px #ff5722;
+  transform: translateX(-50%) rotate(var(--rotation, -135deg));
+  transform-origin: center 100px;
+  z-index: 5;
 }
 
+/* Capa para posicionar los números alrededor de la rueda */
+.dial-scale {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.dial-num {
+  position: absolute;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  width: 20px;
+  text-align: center;
+  height: 20px;
+  font-weight: bold;
+}
+
+/* Coordenadas exactas en círculo para cada dial */
+.num-88  { top: 165px; left: 25px;  }
+.num-90  { top: 115px; left: 15px;  }
+.num-92  { top: 65px;  left: 28px;  }
+.num-94  { top: 30px;  left: 60px;  }
+.num-96  { top: 15px;  left: 105px; }
+.num-98  { top: 30px;  left: 150px; }
+.num-100 { top: 65px;  left: 182px; }
+.num-102 { top: 115px; left: 195px; }
+.num-104 { top: 165px; left: 185px; }
+.num-106 { top: 200px; left: 145px; }
+.num-108 { top: 200px; left: 65px;  }
+
 .tuner-inner-circle {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   background: linear-gradient(145deg, #092533, #05161f);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(0, 168, 204, 0.4);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  border: 2px solid rgba(0, 168, 204, 0.3);
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* Cambio de color al botón de encendido central */
-.power-center-btn.playing {
-  color: #00a8cc;
-  filter: drop-shadow(0 0 12px #00a8cc);
-}
-
-/* Botón de Encendido Central */
 .power-center-btn {
   background: none;
   border: none;
@@ -154,34 +187,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
 }
 
-.power-center-btn svg {
-  width: 32px;
-  height: 32px;
-}
+.power-center-btn svg { width: 32px; height: 32px; }
+.power-center-btn.playing { color: #00a8cc; filter: drop-shadow(0 0 10px #00a8cc); }
 
-/* Estado Activo de Encendido */
-.power-center-btn.playing {
-  color: #ff5722;
-  filter: drop-shadow(0 0 8px rgba(255, 87, 34, 0.6));
-}
-
-/* Fila de Volumen y Mensajes */
 .volume-row {
   display: flex;
   align-items: center;
   width: 85%;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 .vol-btn {
   background: #202225;
   border: none;
   color: #ffffff;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -189,34 +212,21 @@ body {
   cursor: pointer;
 }
 
-.vol-btn svg {
-  width: 20px;
-  height: 20px;
-}
+.vol-btn svg { width: 18px; height: 18px; }
+.status-text { margin-left: 15px; font-size: 14px; color: #00a8cc; font-weight: 500; }
 
-.status-text {
-  margin-left: 15px;
-  font-size: 14px;
-  color: #ff5722;
-}
+.loading { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
 
-/* Animación de carga rápida */
-.loading {
-  animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-  0% { opacity: 0.5; }
-  50% { opacity: 1; }
-  100% { opacity: 0.5; }
-}
-
-/* Rejilla Inferior de Estaciones Favoritas */
+/* Rejilla de favoritos corregida y compacta para celulares */
 .favorites-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   width: 100%;
-  background-color: #16171a;
-  border-top: 1px solid #202225;
+  background-color: rgba(5, 25, 35, 0.95);
+  border-top: 1px solid rgba(0, 168, 204, 0.25);
+  backdrop-filter: blur(10px);
 }
 
 .fav-box {
@@ -224,48 +234,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 0;
-  border-right: 1px solid #202225;
-  border-bottom: 1px solid #202225;
+  padding: 15px 0;
+  border-right: 1px solid rgba(0, 168, 204, 0.1);
+  border-bottom: 1px solid rgba(0, 168, 204, 0.1);
   cursor: pointer;
 }
 
-.fav-box:nth-child(3n) {
-  border-right: none;
-}
+.fav-box:nth-child(3n) { border-right: none; }
+.fav-num { font-size: 10px; color: #5e6268; margin-bottom: 2px; }
+.fav-plus { font-size: 16px; color: #8e9297; font-weight: bold; }
 
-.fav-num {
-  font-size: 11px;
-  color: #5e6268;
-  margin-bottom: 4px;
-}
-
-.fav-plus {
-  font-size: 20px;
-  color: #8e9297;
-  font-weight: 300;
-}
-.favorites-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 100%;
-  background-color: rgba(5, 25, 35, 0.85);
-  border-top: 1px solid rgba(0, 168, 204, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-/* Botón Estrella de Favoritos */
-.fav-star-btn {
-  background: none;
-  border: none;
-  color: #8e9297;
-  font-size: 28px;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: all 0.2s ease;
-}
-
-.fav-star-btn.active {
-  color: #00a8cc;
-  text-shadow: 0 0 10px rgba(0, 168, 204, 0.6);
-}
