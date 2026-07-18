@@ -26,7 +26,7 @@ const stations = [
   {
     name: "Radio La Patrona",
     frequency: "96.3",
-    url: "http://IP_DE_PATRONA:PUERTO/stream",
+    url: "https://sonic.globalstream.pro/8080/stream",
     logo: "img/lapatrona.png",
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
