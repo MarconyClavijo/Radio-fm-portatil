@@ -38,6 +38,14 @@ const stations = [
     logo: "img/lafuerte.png",
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
+  },
+  {
+    name: "Radio La Jefa",
+    frequency: "107.5",
+    url: "https://panelautodj.innovatestream.pe/7320/stream",
+    logo: "img/lafuerte.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
   }
   
 ];
