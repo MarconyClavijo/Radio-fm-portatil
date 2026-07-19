@@ -18,7 +18,7 @@ const stations = [
   {
     name: "Radio La Fuerte",
     frequency: "104.7",
-    url: "https://panelautodj.innovatestream.pe/7322",
+    url: "https://panelautodj.innovatestream.pe/7324/stream",
     logo: "img/antena10.png",
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
