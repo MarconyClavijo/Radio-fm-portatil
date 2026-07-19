@@ -24,6 +24,14 @@ const stations = [
     whatsapp: "https://wa.me"
   },
   {
+    name: "Radio La Incondicional",
+    frequency: "105.3",
+    url: "https://panelautodj.innovatestream.pe/8540/stream",
+    logo: "img/antena10.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+  },
+  {
     name: "Radio La Tremenda",
     frequency: "106.5",
     url: "https://radiostreaming.pro/8238/stream",
