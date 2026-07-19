@@ -10,18 +10,18 @@
 </head>
 <body>
 
-  <!-- Barra Superior -->
-  <div class="top-bar">
-    <span class="app-title">FM Radio</span>
-    <button class="top-btn" id="mute-top">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/></svg>
-    </button>
-  </div>
-
-  <!-- Contenedor Principal -->
+  <!-- Contenedor Inteligente que se centra en PC y Celular -->
   <div class="main-container">
     
-    <!-- Frecuencia Gigante con Estrella -->
+    <!-- Fila Superior: Título y Bocina de Mute -->
+    <div class="top-bar">
+      <span class="app-title">FM Radio</span>
+      <button class="top-btn" id="mute-top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/></svg>
+      </button>
+    </div>
+
+    <!-- Fila Digital: Flechas, Estrella y Frecuencia -->
     <div class="display-container">
       <button class="nav-arrow" id="prev">I◄</button>
       <div class="freq-box">
@@ -32,14 +32,12 @@
       <button class="nav-arrow" id="next">►I</button>
     </div>
 
-    <!-- Nombre de la Emisora Activa -->
+    <!-- Fila de Texto: Nombre de la Emisora Activa -->
     <div class="station-name" id="station">Buscando señal...</div>
 
-    <!-- Sintonizador Circular Analógico Simétrico -->
+    <!-- El Gran Dial Circular Analógico (Centro Perfecto) -->
     <div class="tuner-outer-circle">
-      <!-- Aguja indicadora que gira desde el centro real -->
       <div class="tuner-needle" id="needle"></div>
-
       <div class="dial-scale">
         <span class="dial-num num-86">86</span>
         <span class="dial-num num-88">88</span>
@@ -54,8 +52,6 @@
         <span class="dial-num num-106">106</span>
         <span class="dial-num num-108">108</span>
       </div>
-      
-      <!-- Círculo central con botón de encendido -->
       <div class="tuner-inner-circle">
         <button class="power-center-btn" id="power">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -65,7 +61,7 @@
       </div>
     </div>
 
-    <!-- Botón de Volumen Flotante Inferior -->
+    <!-- Fila de Volumen Inferior Centrada -->
     <div class="volume-row">
       <button class="vol-btn" id="vol-toggle">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
@@ -73,7 +69,7 @@
       <div class="status-text" id="status"></div>
     </div>
 
-    <!-- Rejilla de Estaciones Favoritas -->
+    <!-- Rejilla Inferior de Estaciones Favoritas -->
     <div class="favorites-grid">
       <div class="fav-box" data-index="0"><span class="fav-num">01</span><span class="fav-plus">+</span></div>
       <div class="fav-box" data-index="1"><span class="fav-num">02</span><span class="fav-plus">+</span></div>
