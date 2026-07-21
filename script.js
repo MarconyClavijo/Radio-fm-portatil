@@ -1,6 +1,14 @@
 const stations = [
   {
     name: "Radio La Patrona",
+    frequency: "88.5",
+    url: "https://radiostreaming.pro/8234/stream",
+    logo: "img/lapatrona.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+   },   
+  {
+    name: "Radio La Patrona",
     frequency: "96.3",
     url: "https://sonic.globalstream.pro/8080/stream",
     logo: "img/lapatrona.png",
