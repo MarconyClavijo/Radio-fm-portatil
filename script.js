@@ -1,6 +1,6 @@
 const stations = [
   {
-    name: "Radio La Patrona",
+    name: "Radio Stereo L",
     frequency: "88.5",
     url: "https://radiostreaming.pro/8234/stream",
     logo: "img/lapatrona.png",
