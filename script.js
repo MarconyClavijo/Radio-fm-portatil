@@ -16,6 +16,14 @@ const stations = [
     whatsapp: "https://wa.me"
    },   
   {
+    name: "Radio La Raya",
+    frequency: "95.9",
+    url: "https://panelautodj.innovatestream.pe/8466/stream",
+    logo: "img/lapatrona.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+   },   
+  {
     name: "Radio La Patrona",
     frequency: "96.3",
     url: "https://sonic.globalstream.pro/8080/stream",
