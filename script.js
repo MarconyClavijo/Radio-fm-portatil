@@ -10,7 +10,7 @@ const stations = [
  {
     name: "Radio Maxima",
     frequency: "89.9",
-    url: "https://panelautodj.innovatestream.pe/7322/stream",
+    url: "https://panelautodj.innovatestream.pe/8342/stream",
     logo: "img/lapatrona.png",
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
