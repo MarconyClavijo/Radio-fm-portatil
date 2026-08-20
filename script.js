@@ -23,6 +23,14 @@ const stations = [
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
   },
+ {
+    name: "Radio San Francisco",
+    frequency: "101.1",
+    url: "https://panelautodj.innovatestream.pe/7324/stream",
+    logo: "img/lapatrona.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+   },   
   {
     name: "Radio Stereo M",
     frequency: "101.5",
