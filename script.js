@@ -31,6 +31,14 @@ const stations = [
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
   },
+  {
+    name: "Radio La Cumbiambera",
+    frequency: "97.5",
+    url: "https://panelautodj.innovatestream.pe/8464/stream",
+    logo: "img/lapatrona.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+   },   
  {
     name: "Radio San Francisco",
     frequency: "101.1",
