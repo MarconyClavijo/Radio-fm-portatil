@@ -50,7 +50,7 @@ const stations = [
   {
     name: "Radio Stereo M",
     frequency: "101.5",
-    url: "https://radiostreaming.pro/8400/stream",
+    url: "https://sonic.globalstream.pro/8108/stream",
     logo: "https://i.postimg.cc/L8bjb6K5/1687464033296.png",
     facebook: "https://www.facebook.com/share/1Dib9eQUFD/",
     whatsapp: "https://wa.me/51942883375"
