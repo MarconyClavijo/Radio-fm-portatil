@@ -24,7 +24,7 @@ const stations = [
     whatsapp: "https://wa.me"
    },   
   {
-    name: "Radio La Patrona",
+    name: "Pronto Nueva Radio",
     frequency: "96.3",
     url: "https://sonic.globalstream.pro/8080/stream",
     logo: "img/lapatrona.png",
