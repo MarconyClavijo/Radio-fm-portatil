@@ -8,6 +8,14 @@ const stations = [
     whatsapp: "https://wa.me"
    },   
  {
+    name: "Radio La Poderosa",
+    frequency: "89.5",
+    url: "https://panelautodj.innovatestream.pe/8342/stream",
+    logo: "img/lapatrona.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+   },
+ {
     name: "Radio Maxima",
     frequency: "89.9",
     url: "https://panelautodj.innovatestream.pe/8342/stream",
