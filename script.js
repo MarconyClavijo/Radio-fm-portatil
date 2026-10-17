@@ -10,7 +10,7 @@ const stations = [
  {
     name: "Radio La Poderosa",
     frequency: "89.5",
-    url: "https://panelautodj.innovatestream.pe/8342/stream",
+    url: "https://sonic.globalstream.pro/8070/stream",
     logo: "img/lapatrona.png",
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
