@@ -87,6 +87,14 @@ const stations = [
     facebook: "https://facebook.com",
     whatsapp: "https://wa.me"
   },
+ {
+    name: "Radio La Locura",
+    frequency: "107.3",
+    url: "https://radiostreaming.pro/8504/stream",
+    logo: "img/lafuerte.png",
+    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me"
+   },
   {
     name: "Radio La Jefa",
     frequency: "107.5",
